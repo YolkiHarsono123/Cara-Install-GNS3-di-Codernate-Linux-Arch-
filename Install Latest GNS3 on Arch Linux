@@ -1,0 +1,111 @@
+==>Install pip,wget, git and pyqt5.
+#sudo pacman -S python-pip wget git
+#sudo pacman -S python-pyqt5 qt5-tools qt5-multimedia
+
+==>Instal semua paket Python yang dibutuhkan:
+#sudo pacman -S python-pyqt5 qt5-tools qt5-multimedia python-pyzmq
+
+==>Menggunakan pip:
+==>Anda juga dapat menggunakan pip untuk menginstal paket python di atas. (Disarankan)
+#sudo pip install --upgrade pip
+#sudo pip install -U tornado ws4py setuptools netifaces zmq dev
+#sudo pip install -U ws4py 
+#sudo pip install  pyqt5
+
+==>Install gcc, cmake, libelf, libpcap
+#sudo pacman -S gcc cmake libelf libpcap
+
+==>Install Gns3 gui
+#mkdir -p /tmp/gns3
+#cd /tmp/gns3 
+#git clone https://github.com/GNS3/gns3-gui.git
+#cd gns3-gui
+#sudo python setup.py install 
+#cd ..
+
+==>Install Gns3 server:
+#git clone https://github.com/GNS3/gns3-server.git
+#cd gns3-server
+#sudo python setup.py install 
+#cd ..
+
+==>Install dynamips*
+#git clone git://github.com/GNS3/dynamips.git
+#cd dynamips
+#mkdir build
+#cd build
+#cmake ..
+#make
+#sudo make install 
+#cd ../..
+
+==>Unduh dan Install iouyap.
+#git clone http://github.com/ndevilla/iniparser.git
+#cd iniparser
+#make
+#sudo cp libiniparser.* /usr/lib/
+#sudo cp src/iniparser.h /usr/local/include
+#sudo cp src/dictionary.h /usr/local/include
+#cd ..
+
+#git clone https://github.com/GNS3/iouyap.git
+#cd iouyap
+#make
+#sudo make install
+
+==>Install initparser
+#sudo pacman -S bison flex git 
+#git clone http://github.com/ndevilla/iniparser.git
+#cd iniparser
+#make
+#sudo cp libiniparser.* /usr/lib/
+#sudo cp src/iniparser.h /usr/local/include
+#sudo cp src/dictionary.h /usr/local/include 
+#cd ..
+
+==>Install vpcs*
+#git clone https://github.com/GNS3/vpcs.git
+#cd vpcs/src
+#sh mk.sh
+#cp vpcs /usr/local/bin/
+#chmod +x /usr/local/bin/vpcs
+#cd ../..
+
+==>Install ubridge:
+#git clone https://github.com/GNS3/ubridge.git
+#cd ubridge
+#make
+#sudo make install
+#cd ..
+
+==>Buat peluncur
+#sudo pacman -S vim
+#sudo pacman -S nano
+
+==>Unduh gambar logo untuk digunakan sebagai ikon:
+#cd /usr/share/
+#wget https://www.gns3.com/assets/images/logo-colour.png
+
+==>Buat file gns3.desktop menggunakan nano atau vim.
+#vim /usr/share/applications/gns3.desktop
+atau:
+#nano /usr/share/applications/gns3.desktop
+
+==>Tambahkan konten berikut, simpan lalu keluar:
+#sudo tee -a /usr/share/applications/gns3.desktop > /dev/null << EOL
+>[Desktop Entry]
+>Type=Application 
+>Version=1.4.4 
+>Name=GNS3 
+>GenericName=Graphical Network Simulator
+>Comment= Network simulator 
+>Path=/usr/bin/gns3 
+>TryExec=/usr/bin/gns3
+>Exec=/usr/bin/gns3 %f
+>Icon=/usr/share/logo-colour.png 
+>Terminal=false 
+>MimeType=application/vnd.tcpdump.pcap;application/x-pcapng;application/x-snoop;application/x-iptrace;application/x-lanalyzer;application/x-nettl;application/x-radcom;application/x-etherpeek;application/x-visualnetworks;application/x-netinstobserver;application/x-5view;
+>Categories=Application;Network;
+>EOL
+
+Itu saja. Anda sekarang dapat meluncurkan Gns3 dengan mengetik “Gns3” di terminal atau di kotak pencarian aplikasi
